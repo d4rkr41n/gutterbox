@@ -9,9 +9,7 @@
 
 <?php
     $myPDO = new PDO('sqlite:/home/pi/scanned.db');
-?>
 
-<?php
     $targets = $myPDO->query("SELECT os,hostname,address,ports FROM targets");
     foreach($targets as $tar)
     {

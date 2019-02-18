@@ -53,6 +53,7 @@ def main():
     add_item(conn, "windows", "localhost", 1, "80,69,8080")
 
     # Close the database connection
+    conn.commit()
     conn.close()
 
 if __name__ == '__main__':
