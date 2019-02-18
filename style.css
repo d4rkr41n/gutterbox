@@ -1,0 +1,27 @@
+*{
+    background-color: white;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    width: 90%;
+}
+
+#scan-table{
+    width: 100%;
+    height: 100%;
+}
+
+.table-header{
+    background-color: B9C9FE;
+}
+
+.table-row{
+    border:1px solid white;
+    font-weight: bold;
+    background-color: E8EDFF;
+}
+
+.windows{background-image: url('media/windows.png');}
+.linux{background-image: url('media/linux.png');}

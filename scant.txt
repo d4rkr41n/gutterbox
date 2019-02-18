@@ -1,0 +1,30 @@
+# Nmap 7.70 scan initiated Mon Feb 18 01:16:33 2019 as: nmap -O -oG scant 192.168.1.0/24
+Host: 192.168.1.1 ()	Status: Up
+Host: 192.168.1.1 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///, 443/open/tcp//https///	Ignored State: filtered (997)	Seq Index: 261	IP ID Seq: Randomized
+Host: 192.168.1.10 ()	Status: Up
+Host: 192.168.1.10 ()	Ports: 22/open/tcp//ssh///, 5900/open/tcp//vnc///	Ignored State: closed (998)	OS: Linux 3.10 - 4.11	Seq Index: 259	IP ID Seq: All zeros
+Host: 192.168.1.20 ()	Status: Up
+Host: 192.168.1.20 ()	Ports: 21/open/tcp//ftp///, 22/open/tcp//ssh///, 80/open/tcp//http///, 111/open/tcp//rpcbind///	Ignored State: closed (996)	OS: Linux 3.10 - 4.11	Seq Index: 256	IP ID Seq: All zeros
+Host: 192.168.1.40 ()	Status: Up
+Host: 192.168.1.40 ()	Ports: 22/open/tcp//ssh///, 25/open/tcp//smtp///, 110/open/tcp//pop3///, 111/open/tcp//rpcbind///, 143/open/tcp//imap///, 993/open/tcp//imaps///, 995/open/tcp//pop3s///	Ignored State: closed (993)	OS: Linux 3.10 - 4.11	Seq Index: 262	IP ID Seq: All zeros
+Host: 192.168.1.50 ()	Status: Up
+Host: 192.168.1.50 ()	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///, 139/open/tcp//netbios-ssn///, 445/open/tcp//microsoft-ds///	Ignored State: closed (996)	OS: Linux 3.10 - 4.11	Seq Index: 256	IP ID Seq: All zeros
+Host: 192.168.1.60 ()	Status: Up
+Host: 192.168.1.60 ()	Ports: 21/open/tcp//ftp///, 22/open/tcp//ssh///, 139/open/tcp//netbios-ssn///, 445/open/tcp//microsoft-ds///, 5900/open/tcp//vnc///	Ignored State: closed (995)	OS: Linux 3.10 - 4.11	Seq Index: 259	IP ID Seq: All zeros
+Host: 192.168.1.70 ()	Status: Up
+Host: 192.168.1.70 ()	Ports: 53/open/tcp//domain///, 80/open/tcp//http///, 88/open/tcp//kerberos-sec///, 135/open/tcp//msrpc///, 139/open/tcp//netbios-ssn///, 389/open/tcp//ldap///, 443/open/tcp//https///, 445/open/tcp//microsoft-ds///, 464/open/tcp//kpasswd5///, 593/open/tcp//http-rpc-epmap///, 636/open/tcp//ldapssl///, 3268/open/tcp//globalcatLDAP///, 3269/open/tcp//globalcatLDAPssl///, 3389/open/tcp//ms-wbt-server///, 49152/open/tcp//unknown///, 49153/open/tcp//unknown///, 49154/open/tcp//unknown///, 49155/open/tcp//unknown///, 49157/open/tcp//unknown///, 49158/open/tcp//unknown///, 49159/open/tcp//unknown///	Ignored State: closed (979)	OS: Microsoft Windows Server 2012 R2	Seq Index: 258	IP ID Seq: Incremental
+Host: 192.168.1.80 ()	Status: Up
+Host: 192.168.1.80 ()	Ports: 53/open/tcp//domain///, 80/open/tcp//http///, 88/open/tcp//kerberos-sec///, 135/open/tcp//msrpc///, 139/open/tcp//netbios-ssn///, 389/open/tcp//ldap///, 443/open/tcp//https///, 445/open/tcp//microsoft-ds///, 464/open/tcp//kpasswd5///, 593/open/tcp//http-rpc-epmap///, 636/open/tcp//ldapssl///, 3268/open/tcp//globalcatLDAP///, 3269/open/tcp//globalcatLDAPssl///, 3389/open/tcp//ms-wbt-server///, 49152/open/tcp//unknown///, 49153/open/tcp//unknown///, 49154/open/tcp//unknown///, 49155/open/tcp//unknown///, 49157/open/tcp//unknown///, 49158/open/tcp//unknown///, 49159/open/tcp//unknown///	Ignored State: closed (979)	OS: Microsoft Windows Server 2012 R2	Seq Index: 259	IP ID Seq: Incremental
+Host: 192.168.1.90 ()	Status: Up
+Host: 192.168.1.90 ()	Ports: 135/open/tcp//msrpc///, 139/open/tcp//netbios-ssn///, 445/open/tcp//microsoft-ds///, 1433/open/tcp//ms-sql-s///, 3389/open/tcp//ms-wbt-server///	Ignored State: closed (995)	Seq Index: 252	IP ID Seq: Incremental
+Host: 192.168.1.100 ()	Status: Up
+Host: 192.168.1.100 ()	Ports: 80/open/tcp//http///, 135/open/tcp//msrpc///, 139/open/tcp//netbios-ssn///, 445/open/tcp//microsoft-ds///, 3389/open/tcp//ms-wbt-server///, 49152/open/tcp//unknown///, 49153/open/tcp//unknown///, 49154/open/tcp//unknown///, 49157/open/tcp//unknown///	Ignored State: closed (991)	OS: Microsoft Windows Vista Home Premium SP1, Windows 7, or Windows Server 2008	Seq Index: 255	IP ID Seq: Incremental
+Host: 192.168.1.110 ()	Status: Up
+Host: 192.168.1.110 ()	Ports: 135/open/tcp//msrpc///, 139/open/tcp//netbios-ssn///, 445/open/tcp//microsoft-ds///, 3389/open/tcp//ms-wbt-server///	Ignored State: closed (996)	Seq Index: 261	IP ID Seq: Incremental
+Host: 192.168.1.114 ()	Status: Up
+Host: 192.168.1.114 ()	Status: Up
+Host: 192.168.1.120 ()	Status: Up
+Host: 192.168.1.120 ()	Ports: 135/open/tcp//msrpc///, 139/open/tcp//netbios-ssn///, 445/open/tcp//microsoft-ds///, 3389/open/tcp//ms-wbt-server///, 49153/open/tcp//unknown///, 49154/open/tcp//unknown///, 49157/open/tcp//unknown///, 49158/open/tcp//unknown///	Ignored State: filtered (992)	OS: Microsoft Windows 7 Professional or Windows 8|Microsoft Windows Vista SP0 or SP1, Windows Server 2008 SP1, or Windows 7|Microsoft Windows Vista SP2, Windows 7 SP1, or Windows Server 2008	Seq Index: 255	IP ID Seq: Incremental
+Host: 192.168.1.113 ()	Status: Up
+Host: 192.168.1.113 ()	Status: Up
+# Nmap done at Mon Feb 18 01:17:54 2019 -- 256 IP addresses (14 hosts up) scanned in 81.65 seconds
