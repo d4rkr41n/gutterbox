@@ -7,7 +7,7 @@ import re
 
 
 parser = argparse.ArgumentParser(description='Convert your nmap scans into a sqlite database!')
-parser.add_argument('-d', type=str, help='The database file to use')
+parser.add_argument('-d', type=str, help='The database file to use',default='scanned.db')
 parser.add_argument('-x', type=str, help='The xml file to read from, please use -oX with nmap')
 args = parser.parse_args()
 
