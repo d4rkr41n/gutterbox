@@ -73,7 +73,7 @@ def main():
                                 id integer PRIMARY KEY,
                                 os text,
                                 hostname text,
-                                address integer,
+                                address text,
                                 ports text
                             ); """
     create_table(conn, targetTableCreate)
@@ -98,7 +98,7 @@ def main():
 
         for addr in host.iter('address'):
             if(addr.attrib['addrtype'] == 'ipv4'):
-                address = str(addr.attrib['addr']).split('.')[-1]
+                address = str(addr.attrib['addr'])
 
         for port in host.iter('port'):
                 ports.append(str(port.attrib['portid']))
