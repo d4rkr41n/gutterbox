@@ -8,6 +8,7 @@ body{
 
 h2{
     color:gray;
+    padding-bottom:0;
 }
 
 #scan-table{
@@ -52,3 +53,7 @@ table tr:first-child th:last-child {
     border-top-right-radius: 10px;
 }
 
+a:hover, a:link, a:visited, a:active{
+    color:gray;
+    text-decoration:none;
+}

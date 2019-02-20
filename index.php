@@ -8,6 +8,7 @@
 <body>
 
 <h2>This might help</h2>
+<p style="padding-top:0;"><a href="https://github.com/d4rkr41n"><i>- d4rkr41n</i></a></p>
 
 <table id="scan-table">
 <thead>
