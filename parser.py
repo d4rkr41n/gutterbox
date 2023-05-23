@@ -7,7 +7,7 @@ import re
 
 
 parser = argparse.ArgumentParser(description='Convert your nmap scans into a sqlite database!')
-parser.add_argument('-d', type=str, help='The database file to use',default='scanned.db')
+parser.add_argument('-d', type=str, help='The database file to use',default='app/scanned.db')
 parser.add_argument('-x', type=str, help='The xml file to read from, please use -oX with nmap')
 args = parser.parse_args()
 
@@ -67,6 +67,7 @@ def main():
     conn = create_connection(database)
     if conn is None:
         raise("Could not connect to database")
+        exit()
 
     """ Create the table if it isn't there """
     targetTableCreate = """ CREATE TABLE IF NOT EXISTS targets (
@@ -109,6 +110,7 @@ def main():
     # Write the targets to the database
     for tar in targets:
         tar.add(conn)
+        print(tar.ptarg())
 
     # Close the database connection
     conn.commit()

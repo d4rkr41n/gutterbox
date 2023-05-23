@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h2>This might help</h2>
+<p style="padding-top:0;"><a href="https://github.com/d4rkr41n"><i>- d4rkr41n</i></a></p>
+
+<table id="scan-table">
+<thead>
+<tr class="table-header">
+    <th>OS</td>
+    <th>HOSTNAME</td>
+    <th>ADDRESS</td>
+    <th><input type="text" name="ports" id="ports" placeholder="ports"></td>
+</tr>
+</thead>
+<tbody>
+
+
+
+  {% for target in targets %}
+    <tr>
+    {% if target.os == "Windows" %}
+      <td class='windows'><img src='static/media/windows.png'></td>
+    {% elif target.os == "Linux" %}
+      <td class='linux'><img src='static/media/linux.png'></td>
+    {% else %}
+      <td class='linux'><img src='static/media/unsure.png'></td>
+    {% endif %}
+
+      <td>{{ target.hostname }}</td>
+      <td>{{ target.address }}</td>
+      <td>{{ target.ports }}</td>
+    </tr>
+  {% endfor %}
+
+
+</tbody>
+</table>
+{% endblock %}

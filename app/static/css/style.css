@@ -26,6 +26,9 @@ tr{
 td{
     padding:5px;
 }
+tr td:last-child{
+    text-align: left;
+}
 .table-header{
     border-bottom:10px solid white;
     font-weight: bold;
