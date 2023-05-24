@@ -106,7 +106,7 @@ def main():
 
 
 
-        targets.append(target(os, hostname, address, ', '.join(ports)))
+        targets.append(target(os, hostname, address, '|'+'|'.join(ports)+'|'))
     # Write the targets to the database
     for tar in targets:
         tar.add(conn)
