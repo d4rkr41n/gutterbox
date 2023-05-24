@@ -1,35 +1,12 @@
-"""
-Flask Documentation:     http://flask.pocoo.org/docs/
-Jinja2 Documentation:    http://jinja.pocoo.org/2/documentation/
-Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
-This file creates your application.
-"""
-
 from app import app, db
 from flask import render_template, request, redirect, url_for, flash
 from app.models import target
-# import sqlite3
-
-###
-# Routing for your application.
-###
 
 @app.route('/')
 def home():
     """Render website's home page."""
     targets = db.session.query(target).all()
     return render_template('home.html', targets=targets)
-
-###
-# The functions below should be applicable to all Flask apps.
-###
-
-@app.route('/<file_name>.txt')
-def send_text_file(file_name):
-    """Send your static text file."""
-    file_dot_text = file_name + '.txt'
-    return app.send_static_file(file_dot_text)
-
 
 @app.after_request
 def add_header(response):
