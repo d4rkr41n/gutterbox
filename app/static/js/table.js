@@ -14,3 +14,7 @@ document.querySelector("#ports").addEventListener("keyup", (event) => {
     filter_ports(event.srcElement.value);
   }
 });
+
+function count_rows() {
+  return document.querySelectorAll('tr:not([style*="display:none"]):not([style*="display: none"])').length;
+}
