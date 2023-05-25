@@ -110,7 +110,8 @@ def main():
     # Write the targets to the database
     for tar in targets:
         tar.add(conn)
-        print(tar.ptarg())
+        #print(tar.ptarg())
+    print(f"[*] Added {len(targets)} targets")
 
     # Close the database connection
     conn.commit()

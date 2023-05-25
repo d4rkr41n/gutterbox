@@ -1,4 +1,4 @@
-app/scanned.db
-*.xml
+**/*.db
+**/*.xml
 **/*.pyc
 **/*.swp
