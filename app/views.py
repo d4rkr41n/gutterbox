@@ -1,12 +1,40 @@
-from app import app, db
 from flask import render_template, request, redirect, url_for, flash
+from sqlalchemy import select
 from app.models import target
+from sqlalchemy import func
+from app import app, db
 
-@app.route('/')
-def home():
+@app.route('/', methods=['GET'])
+def get_home():
     """Render website's home page."""
     targets = db.session.query(target).all()
     return render_template('home.html', targets=targets)
+
+@app.route('/', methods=['POST'])
+def post_home():
+    """Render website's home page with applied filters."""
+    targets = db.session.query(target)
+
+    os = request.form.get("os")
+    if os:
+        targets = targets.where(target.os == os)
+
+    hostname = request.form.get("hostname")
+    if hostname:
+        targets = targets.where(target.hostname == hostname)
+
+    address = request.form.get("address")
+    if address:
+        targets = targets.where(target.address == address)
+
+    ports = request.form.get("ports")
+    if ports:
+        for port in ports.replace(' ','').split(','):
+            targets = targets.filter(target.ports.like('%|'+port+'|%'))
+
+
+    return render_template('home.html', targets=targets.all(), os=os,hostname=hostname,address=address,ports=ports)
+
 
 @app.after_request
 def add_header(response):

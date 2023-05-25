@@ -41,6 +41,9 @@ tbody tr:hover td {
   cursor: pointer;
 }
 
+tbody tr.active td {
+  background-color: #FFEFC6;
+}
 
 table tr:last-child td:first-child {
     border-bottom-left-radius: 10px;

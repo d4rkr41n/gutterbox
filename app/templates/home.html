@@ -7,25 +7,25 @@
 <table id="scan-table">
 <thead>
 <tr class="table-header">
-    <th>OS</td>
-    <th>HOSTNAME</td>
-    <th>ADDRESS</td>
-    <th><input type="text" name="ports" id="ports" placeholder="ports"></td>
+  <form method="POST">
+    <input type="submit" value="Submit Query" hidden>
+    <th><input type="text" name="os" id="os" placeholder="OS" value="{{ os }}"></th>
+    <th><input type="text" name="hostname" id="hostname" placeholder="HOSTNAME" value="{{ hostname }}"></th>
+    <th><input type="text" name="address" id="address" placeholder="ADDRESS" value="{{ address }}"></th>
+    <th><input type="text" name="ports" id="ports" placeholder="PORTS" value="{{ ports }}"></th>
+  </form>
 </tr>
 </thead>
 <tbody>
-
-
 
   {% for target in targets %}
     <tr>
       <td class='{{target.os|lower}}'><img onerror="this.onerror=null;this.src='static/media/unsure.png';" src='static/media/{{target.os|lower}}.png'></td>
       <td>{{ target.hostname }}</td>
       <td>{{ target.address }}</td>
-      <td>{{ target.ports }}</td>
+      <td>{{ target.ports[1:-1]|replace('|', ', ') }}</td>
     </tr>
   {% endfor %}
-
 
 </tbody>
 </table>

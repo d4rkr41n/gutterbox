@@ -1,3 +1,4 @@
 app/scanned.db
 *.xml
 **/*.pyc
+**/*.swp
