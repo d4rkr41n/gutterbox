@@ -61,7 +61,7 @@ tbody tr:last-of-type {
 
 tr td:first-child{
   background-color: var(--dark-accent-color);
-  width:1px;
+  width:128px;
 }
 tr td:last-child{
   text-align: left;
