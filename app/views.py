@@ -16,10 +16,9 @@ def post_home():
     targets = db.session.query(target)
 
     clientId = request.form.get("clientId")
+    clientId = "default" if len(clientId) == 0 else clientId
     if clientId:
         targets = targets.where(target.clientId == clientId)
-    else:
-        clientId = "default"
 
     os = request.form.get("os")
     if os:
