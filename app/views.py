@@ -7,8 +7,10 @@ from app import app, db
 @app.route('/', methods=['GET'])
 def get_home():
     """Render website's home page."""
-    targets = db.session.query(target).all()
-    return render_template('home.html', targets=targets)
+    clientId = "default"
+    targets = db.session.query(target)
+    targets = targets.where(target.clientId == clientId)
+    return render_template('home.html', targets=targets.all(), clientId=clientId)
 
 @app.route('/', methods=['POST'])
 def post_home():
