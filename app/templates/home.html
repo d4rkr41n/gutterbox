@@ -20,7 +20,7 @@
 
   {% for target in targets %}
     <tr>
-      <td class='{{target.os|lower}}'><img onerror="this.onerror=null;this.src='static/media/unsure.png';" src='static/media/{{target.os|lower}}.png'></td>
+      <td class='{{target.os|lower}}'><img onerror="this.onerror=null;this.src='static/media/unsure.png';" title="{{target.os}}" alt="{{target.os}}" src='static/media/{{target.os|lower}}.png'></td>
       <td>{{ target.hostname }}</td>
       <td>{{ target.address }}</td>
       <td>{{ target.ports[1:-1]|replace('|', ', ') }}</td>
