@@ -6,6 +6,14 @@ function count_rows() {
   return get_displayed_rows().length;
 }
 
+// Add toggle listener for row clicks
+document.querySelectorAll("tbody tr").forEach((row) => {
+  row.addEventListener("click", function() {
+    row.classList.toggle('active');
+  });
+});
+
+// Add listener for copy addresses from query
 document.querySelector(".result-count").addEventListener("click", function() {
   var addresses = [];
   get_displayed_rows().forEach((element) => {
