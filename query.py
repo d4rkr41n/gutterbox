@@ -39,7 +39,7 @@ def get_db_cols(conn, table):
 def query_db(conn, columns, table, ports, clientId):
     """ Create a table in the database """
     queryPorts = ' AND ports LIKE '.join(['"%|'+str(port)+'|%"' for port in ports])
-    query = f"SELECT {columns} from {table} WHERE clientId LIKE {clientId} and ports LIKE {queryPorts}"
+    query = f"SELECT {columns} from {table} WHERE clientId LIKE '{clientId}' and ports LIKE {queryPorts}"
     try:
         c = conn.cursor()
         c.execute(query)
