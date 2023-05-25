@@ -15,6 +15,12 @@ def post_home():
     """Render website's home page with applied filters."""
     targets = db.session.query(target)
 
+    clientId = request.form.get("clientId")
+    if clientId:
+        targets = targets.where(target.clientId == clientId)
+    else:
+        clientId = "default"
+
     os = request.form.get("os")
     if os:
         targets = targets.where(target.os == os)
@@ -33,7 +39,7 @@ def post_home():
             targets = targets.filter(target.ports.like('%|'+port+'|%'))
 
 
-    return render_template('home.html', targets=targets.all(), os=os,hostname=hostname,address=address,ports=ports)
+    return render_template('home.html', targets=targets.all(), os=os,hostname=hostname,address=address,ports=ports,clientId=clientId)
 
 
 @app.after_request

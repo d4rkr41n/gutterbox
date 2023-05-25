@@ -8,6 +8,7 @@
 <thead>
 <tr class="table-header">
   <form method="POST">
+    <input type="text" name="clientId" id="clientId" placeholder="Client Id" value="{{ clientId }}">
     <input type="submit" value="Submit Query" hidden>
     <th><input type="text" name="os" id="os" placeholder="OS" value="{{ os }}"></th>
     <th><input type="text" name="hostname" id="hostname" placeholder="HOSTNAME" value="{{ hostname }}"></th>
@@ -29,4 +30,5 @@
 
 </tbody>
 </table>
+<div class='result-count'>{{targets|count}}</div>
 {% endblock %}

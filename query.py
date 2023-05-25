@@ -9,6 +9,7 @@ parser.add_argument('-c', type=str, help='The columns to return, comma separated
 parser.add_argument('-d', type=str, help='The database file to use',default='app/scanned.db')
 parser.add_argument('-p', type=str, help='The ports to return, comma separated',default="%")
 parser.add_argument('-e', help='Just print the table column headers', action='store_true')
+parser.add_argument('-i', type=str, help='The client name to use',default="default")
 parser.add_argument('-s', type=str, help='Specify the ouput separator',default=",")
 parser.add_argument('-t', type=str, help='The database table',default="targets")
 args = parser.parse_args()
@@ -35,10 +36,10 @@ def get_db_cols(conn, table):
         exit(1)
 
 
-def query_db(conn, columns, table, ports):
+def query_db(conn, columns, table, ports, clientId):
     """ Create a table in the database """
     queryPorts = ' AND ports LIKE '.join(['"%|'+str(port)+'|%"' for port in ports])
-    query = f"SELECT {columns} from {table} WHERE ports LIKE {queryPorts}"
+    query = f"SELECT {columns} from {table} WHERE clientId LIKE {clientId} and ports LIKE {queryPorts}"
     try:
         c = conn.cursor()
         c.execute(query)
@@ -56,7 +57,7 @@ def main():
       print(f'{args.s}'.join([row[1] for row in rows]))
       exit()
 
-  rows = query_db(conn, args.c, args.t, args.p.split(","))
+  rows = query_db(conn, args.c, args.t, args.p.split(","), args.i)
   for row in rows:
       print(f'{args.s}'.join([str(item) for item in row]))
 
