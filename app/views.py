@@ -21,11 +21,11 @@ def post_home():
 
     hostname = request.form.get("hostname")
     if hostname:
-        targets = targets.where(target.hostname == hostname)
+        targets = targets.filter(target.hostname.like('%'+hostname+'%'))
 
     address = request.form.get("address")
     if address:
-        targets = targets.where(target.address == address)
+        targets = targets.filter(target.address.like('%'+address+'%'))
 
     ports = request.form.get("ports")
     if ports:
