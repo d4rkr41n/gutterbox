@@ -1,9 +1,15 @@
-function count_rows() {
-  return document.querySelectorAll('tr:not([style*="display:none"]):not([style*="display: none"])').length;
+function get_displayed_rows() {
+  return document.querySelectorAll('tbody tr:not([style*="display:none"]):not([style*="display: none"])');
 }
 
-document.querySelectorAll("tbody tr").forEach(function(elem) {
-  elem.addEventListener("click", function() {
-    elem.classList.toggle('active');
+function count_rows() {
+  return get_displayed_rows().length;
+}
+
+document.querySelector(".result-count").addEventListener("click", function() {
+  var addresses = [];
+  get_displayed_rows().forEach((element) => {
+    addresses.push( element.querySelector("td:nth-child(3)").innerText );
   });
+  navigator.clipboard.writeText(addresses.join('\n'));
 });

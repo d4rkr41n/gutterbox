@@ -75,8 +75,8 @@ tr td:last-child{
 
 tbody tr:hover td {
   background-color: #FFEFC6;
-  font-weight: bold;
   color: var(--accent-color);
+  font-weight: bold;
   cursor: pointer;
 }
 tbody tr.active td {
@@ -112,12 +112,19 @@ input[type=text]{
 }
 
 .result-count {
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    margin: 0.8vw;
-    font-size: 1vw;
-    border-radius: 15px;
-    padding: 1vw;
-    background: var(--accent-color);
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 0.8vw;
+  font-size: 1vw;
+  border-radius: 15px;
+  padding: 1vw;
+  background: var(--accent-color);
+}
+
+.result-count:hover {
+  background-color: #FFEFC6;
+  color: var(--accent-color);
+  font-weight: bold;
+  cursor: pointer;
 }
