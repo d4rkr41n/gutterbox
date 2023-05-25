@@ -1,2 +1,3 @@
 app/scanned.db
 *.xml
+**/*.pyc
