@@ -20,4 +20,10 @@ document.querySelector(".result-count").addEventListener("click", function() {
     addresses.push( element.querySelector("td:nth-child(3)").innerText );
   });
   navigator.clipboard.writeText(addresses.join('\n'));
+  // Play the Copy animation
+  var copyDiv = document.querySelector('.copyAlert:not(.animate)')
+  if(copyDiv) {
+    copyDiv.classList.add('animate');
+    copyDiv.addEventListener('animationend', () => copyDiv.classList.remove('animate') );
+  }
 });
