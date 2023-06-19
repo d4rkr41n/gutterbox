@@ -1,5 +1,15 @@
+# Ensure scanned.db doesn't get shared
 **/*.db
+
+# Hide Any Local Scans
+**/*.gnmap
+**/*.nmap
 **/*.xml
+
+# Hide Python Stuff
 **/*.pyc
 **/*.swp
+
+# I left this here in case people want notes locally
+# I Don't recommend this
 NOTES.md
