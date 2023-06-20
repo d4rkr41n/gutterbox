@@ -2,6 +2,7 @@ from flask import render_template, request, redirect, url_for, flash
 from sqlalchemy import select
 from app.models import target
 from sqlalchemy import func
+from sqlalchemy import or_
 from app import app, db
 
 @app.route('/', methods=['GET'])
@@ -37,8 +38,9 @@ def post_home():
     ports = request.form.get("ports")
     if ports:
         for port in ports.replace(' ','').split(','):
-            targets = targets.filter(target.ports.like('%|'+port+'|%'))
-
+            # Add additional indent to check for || case, I'm sorry for your eyes if you see this
+            targets = targets.filter(or_(*[target.ports.like('%|' + port_or + '|%') for port_or in port.split('||')]))
+            #targets = targets.filter(target.ports.like('%|'+port+'|%'))
 
     return render_template('home.html', targets=targets.all(), os=os,hostname=hostname,address=address,ports=ports,clientId=clientId)
 
