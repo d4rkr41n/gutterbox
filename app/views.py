@@ -5,6 +5,12 @@ from sqlalchemy import func
 from sqlalchemy import or_
 from app import app, db
 
+def targets_filter(targets, column, terms):
+    # Re-Usable Filtering For Columns, implicit AND with || operator support
+    for item in terms.replace(' ','').split(','):
+        targets = targets.filter(or_(*[column.like(item_or + '%') for item_or in item.split('||')]))
+    return targets
+
 @app.route('/', methods=['GET'])
 def get_home():
     """Render website's home page."""
@@ -25,22 +31,21 @@ def post_home():
 
     os = request.form.get("os")
     if os:
-        targets = targets.where(target.os == os)
+        targets = targets_filter(targets, target.os, os)
 
     hostname = request.form.get("hostname")
     if hostname:
-        targets = targets.filter(target.hostname.like('%'+hostname+'%'))
+        targets = targets_filter(targets, target.hostname, hostname)
 
     address = request.form.get("address")
     if address:
-        targets = targets.filter(target.address.like('%'+address+'%'))
+        targets = targets_filter(targets, target.address, address)
 
     ports = request.form.get("ports")
     if ports:
+        # I needed a non-default case to handle ports since they have a | separator in the DB
         for port in ports.replace(' ','').split(','):
-            # Add additional indent to check for || case, I'm sorry for your eyes if you see this
             targets = targets.filter(or_(*[target.ports.like('%|' + port_or + '|%') for port_or in port.split('||')]))
-            #targets = targets.filter(target.ports.like('%|'+port+'|%'))
 
     return render_template('home.html', targets=targets.all(), os=os,hostname=hostname,address=address,ports=ports,clientId=clientId)
 
