@@ -8,8 +8,8 @@ from app import app, db
 
 def targets_filter(targets, column, terms):
     # Re-Usable Filtering For Columns, implicit AND with || operator support
-    conditions = []
     for item in terms.replace(' ','').split(','):
+        conditions = []
         for item_or in item.split('||'):
             if item_or.startswith('!'):
                 conditions.append( not_(column.ilike(item_or.replace('!','') + '%')) )
@@ -51,8 +51,8 @@ def post_home():
     ports = request.form.get("ports")
     if ports:
         # I needed a non-default case to handle ports since they have a | separator in the DB
-        conditions = []
         for item in ports.replace(' ','').split(','):
+            conditions = []
             for item_or in item.split('||'):
                 if item_or.startswith('!'):
                     conditions.append( not_(target.ports.ilike('%|' + item_or.replace('!','') + '|%')) )
