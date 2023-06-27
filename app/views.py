@@ -2,13 +2,20 @@ from flask import render_template, request, redirect, url_for, flash
 from sqlalchemy import select
 from app.models import target
 from sqlalchemy import func
-from sqlalchemy import or_
+from sqlalchemy import or_, not_
 from app import app, db
+
 
 def targets_filter(targets, column, terms):
     # Re-Usable Filtering For Columns, implicit AND with || operator support
+    conditions = []
     for item in terms.replace(' ','').split(','):
-        targets = targets.filter(or_(*[column.like(item_or + '%') for item_or in item.split('||')]))
+        for item_or in item.split('||'):
+            if item_or.startswith('!'):
+                conditions.append( not_(column.ilike(item_or.replace('!','') + '%')) )
+            else:
+                conditions.append( column.ilike(item_or.replace('!','') + '%') )
+        targets = targets.filter(or_(*conditions))
     return targets
 
 @app.route('/', methods=['GET'])
@@ -44,8 +51,14 @@ def post_home():
     ports = request.form.get("ports")
     if ports:
         # I needed a non-default case to handle ports since they have a | separator in the DB
-        for port in ports.replace(' ','').split(','):
-            targets = targets.filter(or_(*[target.ports.like('%|' + port_or + '|%') for port_or in port.split('||')]))
+        conditions = []
+        for item in ports.replace(' ','').split(','):
+            for item_or in item.split('||'):
+                if item_or.startswith('!'):
+                    conditions.append( not_(target.ports.ilike('%|' + item_or.replace('!','') + '|%')) )
+                else:
+                    conditions.append( target.ports.ilike('%|' + item_or.replace('!','') + '|%') )
+            targets = targets.filter(or_(*conditions))
 
     return render_template('home.html', targets=targets.all(), os=os,hostname=hostname,address=address,ports=ports,clientId=clientId)
 
@@ -60,12 +73,10 @@ def add_header(response):
     response.headers['Cache-Control'] = 'public, max-age=600'
     return response
 
-
 @app.errorhandler(404)
 def page_not_found(error):
     """Custom 404 page."""
     return render_template('404.html'), 404
-
 
 if __name__ == '__main__':
     app.run(debug=True,host="0.0.0.0",port="8080")
